@@ -24,7 +24,7 @@
 		<input type="hidden" name="page" value="admin/GestioneCatalogo.jsp"><br><br>
 		<div class="tableRow">
 			<p>Nome:</p>
-			<p><input type="text" name="nome" value="" required></p>
+			<p><input type="text" name="nome" value="" required ></p>
 		</div>
 		<div class="tableRow">
 			<p>Descrizione:</p>
@@ -73,4 +73,24 @@
 	<%@ include file="../fragments/footer.jsp" %>
 
 </body>
+
+<script>
+//event listener quando sul submit per verificare che non ci sia la presenza di caratteri < o > per evitare inserimento di codice java
+document.getElementById('myform').addEventListener('submit', function(event) {
+    const invalidChars = /[<>]/; //caratteri che non sono ammessi
+    let isValid = true;
+    const inputs = document.querySelectorAll('#myform input[type="text"]');
+
+    inputs.forEach(function(input) {
+        if (invalidChars.test(input.value)) {
+            isValid = false;
+            alert('Il campo ' + input.name + ' contiene caratteri non consentiti.');
+        }
+    });
+
+    if (!isValid) {
+        event.preventDefault(); 
+    }
+});
+</script>
 </html>
