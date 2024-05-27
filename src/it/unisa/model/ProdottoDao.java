@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -148,7 +149,7 @@ public class ProdottoDao implements ProdottoDaoInterfaccia{
 
 	@Override
 	public synchronized ArrayList<ProdottoBean> doRetrieveAll(String order) throws SQLException {
-
+			// funzione corretta per non far verificare l'sql injection qui sotto
 		    final List<String> VALID_ORDER_COLUMNS = Arrays.asList("colonna1", "colonna2", "colonna3");
 
 		        ArrayList<ProdottoBean> products = new ArrayList<>();
